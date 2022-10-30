@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<!-- 使用自定义的搜索组件 -->
+		<!-- <my-search :bgcolor="'pink'" :radius="3"></my-search> -->
+		<my-search @click="gotoSearch"></my-search>
 		<view class="scroll-view-container">
 			<!-- 左侧滚动区 -->
 			<scroll-view class="left-scroll-view" scroll-y="true" :style="{height: wh +'px'}">
@@ -32,7 +35,7 @@
 	export default {
 		data() {
 			return {
-				// 当前设备的可用高度= 屏幕高度 - navigationBar高度 - tabBar 高度
+				// 当前设备的可用高度= 屏幕高度 - navigationBar高度 - tabBar 高度 - 自定义搜索组件的高度
 				wh:0,
 				// 分类数据列表
 				cateList:[],
@@ -48,7 +51,7 @@
 			// 获取当前系统的信息
 			const sysInfo = uni.getSystemInfoSync()
 			// 为 wh 窗口可用高度动态赋值
-			this.wh=sysInfo.windowHeight
+			this.wh=sysInfo.windowHeight - 50
 			this.getCateList()
 		},
 		methods:{
@@ -74,6 +77,12 @@
 			gotoGoodsList(item3){
 				uni.navigateTo({
 					url:'/subpkg/goods_list/goods_list?cid='+item3.cat_id
+				})
+			},
+			gotoSearch(){
+				// 跳转到search页面
+				uni.navigateTo({
+					url:'/subpkg/search/search'
 				})
 			}
 		}
