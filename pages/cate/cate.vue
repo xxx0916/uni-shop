@@ -32,7 +32,10 @@
 </template>
 
 <script>
+	import badgeMix from "@/mixins/tabbar-badge.js"
 	export default {
+		// 将 badgeMix 混入到当前的页面中进行使用
+		mixins:[badgeMix],
 		data() {
 			return {
 				// 当前设备的可用高度= 屏幕高度 - navigationBar高度 - tabBar 高度 - 自定义搜索组件的高度
