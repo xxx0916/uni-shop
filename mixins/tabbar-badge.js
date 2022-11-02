@@ -17,5 +17,13 @@ export default{
 	},
 	computed:{
 		...mapGetters('m_cart',['total'])
+	},
+	watch:{
+		total: {
+			handler(newVal){ 
+				this.setBadge() 
+			}, 
+			immediate:true  
+		} ,
 	}
 }
